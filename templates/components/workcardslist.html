@@ -1,0 +1,78 @@
+{% load static %}
+{% load muscle_list %}
+{% muscle_list as muscleItem %}
+
+<link href="{% static 'css/img.css' %}" rel="stylesheet" class="img" />
+
+
+    <div class="row">
+      <div class="col-12">
+          <div class="card-group">
+              <div class="card m-3">
+                <a href=""><img src="{%static 'workoutimages/abs.jpg' %}" class="card-img-top img" alt="..."></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{muscleItem.0.name}}</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              <div class="card m-3">
+                <a href=""><img src="{%static 'workoutimages/arms.jpg' %}" class="card-img-top img" alt="..."></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{muscleItem.1.name}}</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              <div class="card m-3">
+                <a href=""><img src="{%static 'workoutimages/back.jpg' %}" class="card-img-top img" alt="..."></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{muscleItem.2.name}}</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+              <div class="card m-3">
+                <a href=""><img src="{%static 'workoutimages/calves.jpg' %}" class="card-img-top img" alt="..."></a>
+                  <div class="card-body">
+                    <h5 class="card-title">{{muscleItem.3.name}}</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row justify-content-md-center">
+      <div class="col-10">
+          <div class="card-group">
+              <div class="card m-3">
+                  <a href=""><img src="{%static 'workoutimages/chest.jpeg' %}" class="card-img-top img" alt="..."></a>
+                  <div class="card-body">
+                      <h5 class="card-title">{{muscleItem.4.name}}</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+              </div>
+              <div class="card m-3">
+                  <a href=""><img src="{%static 'workoutimages/legs.jpg' %}" class="card-img-top img" alt="..."></a>
+                  <div class="card-body">
+                      <h5 class="card-title">{{muscleItem.5.name}}</h5>
+                      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+              </div>
+              <div class="card m-3">
+                  <a href=""><img src="{%static 'workoutimages/shoulders.jpg' %}" class="card-img-top img" alt="..."></a>
+                  <div class="card-body">
+                      <h5 class="card-title">{{muscleItem.6.name}}</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+              </div>
+          </div>
+      </div>    
+  </div>
+
+
+

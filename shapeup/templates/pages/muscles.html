@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{% block title %}Muscles{% endblock %}
+
+{% block content %}
+
+    <h1 class="text-center align-top">Muscle Map</h1>
+
+    <div style="width:1000px;" class="list-group mx-auto mt-5">
+        {%for muscle in muscles%}
+            <!-- {%for key,value in muscle.items%}
+                {%ifequal key 'name'%} -->
+                    <a href="" class="list-group-item d-flex justify-content-md-around align-items-center"><span class="align-middle" >{{muscle.name}}</span><img class="float-right" style="width:auto; height:200px" src="https://wger.de{{muscle.image_url_main}}" /></a>
+                <!-- {%endifequal%}
+            {%endfor%} -->
+        {%endfor%}
+    </div>
+
+{% endblock %}
+
