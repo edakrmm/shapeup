@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from shapeup.models import CustomUserModel
 
-class signupform(UserCreationForm):
+class SignupForm(UserCreationForm):
     class Meta:
         model =  CustomUserModel
         abstract = True

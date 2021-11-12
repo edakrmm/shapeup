@@ -1,5 +1,5 @@
 from django.urls import path
-from shapeup.views import muscles, home, workouts, signup, logoutview
+from shapeup.views import muscles, home, workouts, signup, logoutview, updateprofile
 from django.contrib.auth import views
 
 urlpatterns = [
@@ -8,5 +8,6 @@ urlpatterns = [
     path('workouts/', workouts, name='workouts'),
     path('signup/', signup, name='signup'),
     path('logout/', logoutview, name='logoutview'),
+    path('updateprofile/', updateprofile, name='updateprofile'),
     path('login/', views.LoginView.as_view(template_name="pages/login.html"), name='login') #djangonun auth view ları class based view lar. Class based viewları view olarak kullanmak için .as_view kullanıyoruz.
 ]

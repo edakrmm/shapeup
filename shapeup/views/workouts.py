@@ -2,7 +2,7 @@ from django.shortcuts import render
 import requests
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='signup')
+@login_required(login_url='login')
 def workouts(request):
     
     url = "https://wger.de/api/v2/exercisecategory"
