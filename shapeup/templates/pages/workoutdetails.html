@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{%load static%}
+
+
+
+{% block title %}Exercises{% endblock %}
+
+{% block content %}
+<link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-detail" />
+    <h1 class="text-center align-top">Exercises</h1>
+    <div class="row g-0 mt-5">
+      <div class="col-8 rounded float-left">
+          {%for work in workout%}
+          <div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">{{work.name}}</h5>
+                  <p class="card-text">{{work.description | safe}}</p>
+                </div>
+              </div>
+          </div>
+          {%endfor%}
+      </div>
+
+      <div class="col-4 rounded float-right">
+        {% for i in img %}
+        <img src="{{i.image}}" class="img-detail float-right mt-5" alt="...">
+        {% endfor %}
+      </div>
+    </div>
+
+
+
+{% endblock %}
+
