@@ -1,10 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, get_object_or_404
 import requests
-
+from django.contrib import messages
+from shapeup.forms.addchallengeform import AddChallenge
+from shapeup.models import ChallengesModel
+challenges = []
 
 def workoutdetails(request,slug):
     
-
     if slug=='arms':
         querystring = {"language": 2,"category":8}
         bot=0
@@ -46,76 +48,26 @@ def workoutdetails(request,slug):
     response = requests.get("https://wger.de/api/v2/exerciseimage", headers=headers, params=querystring)
     response = response.json()
     img = response['results'][bot:top]
-   
- 
-    return render(request, 'pages/workoutdetails.html', context={"workout" : workout, "img":img})
 
-
-
-# from django.shortcuts import render
-# import requests
-
-# def workoutnames(request):
-
-#     url = "https://wger.de/api/v2/exercise"
-
-#     name_arms = []
-#     name_legs = []
-#     name_abs = []
-#     name_chest = []
-#     name_back = []
-#     name_shoulders = []
-#     name_calves = []
-
-#     description_arms = []
-#     description_legs = []
-#     description_abs = []
-#     description_chest = []
-#     description_back = []
-#     description_shoulders = []
-#     description_calves = []
-
-#     for i in range(8,15):
-        
-#         querystring = {"category": i, "language":2}
-
-#         headers = {
-#             'Authorization': "Token a6371866eac053e73c469d09686b6b7fd0b631d8",
-#             'Content-Type': "application/json"
-#             }
-
-#         response = requests.request("GET", url, headers=headers, params=querystring)
-#         response = response.json()
-#         response = response['results']
-#         for j in range(len(response)):
-#             if i==8:
-#                 name_arms.append(response[j]['name'])
-#             if i==9:
-#                 name_legs.append(response[j]['name'])
-#             if i==10:
-#                 name_abs.append(response[j]['name'])
-#             if i==11:
-#                 name_chest.append(response[j]['name'])
-#             if i==12:
-#                 name_back.append(response[j]['name'])
-#             if i==13:
-#                 name_shoulders.append(response[j]['name'])
-#             if i==14:
-#                 name_calves.append(response[j]['name'])
-#         for j in range(len(response)):
-#             if i==8:
-#                 description_arms.append(response[j]['description'])
-#             if i==9:
-#                 description_legs.append(response[j]['description'])
-#             if i==10:
-#                 description_abs.append(response[j]['description'])
-#             if i==11:
-#                 description_chest.append(response[j]['description'])
-#             if i==12:
-#                 description_back.append(response[j]['description'])
-#             if i==13:
-#                 description_shoulders.append(response[j]['description'])
-#             if i==14:
-#                 description_calves.append(response[j]['description'])
+    if ChallengesModel.objects.filter(challenges=slug).exists():
+        check = False
+    else:
+        check = True
     
-#     print(description_legs)
+    if 'start' in request.POST:
+        if check==True:
+            challenge = ChallengesModel()
+            challenge.challenges = slug
+            challenge.challenger = request.user
+            challenge.save()
+            messages.success(request, "You have started this challenge")
+            check=False
+
+    
+    elif 'stop' in request.POST:
+        if ChallengesModel.objects.filter(challenges=slug).exists():
+            ChallengesModel.objects.get(challenges=slug).delete()
+            check = True
+
+    return render(request, 'pages/workoutdetails.html', context={"workout" : workout, "img":img, "check":check})
+

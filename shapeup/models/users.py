@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUserModel(AbstractUser):
     avatar = models.ImageField(upload_to='avatar/', blank=True, null=True)
-
+    
     class Meta:
         db_table = 'users'
         verbose_name = 'User'
