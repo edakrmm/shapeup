@@ -17,6 +17,13 @@ def muscle_list():
 
     response = requests.request("GET", url, headers=headers, params=querystring)
     response = response.json()
-    musclelist = response['results']
-    
+    response = response['results']
+    musclelist = []
+
+    for resp in response:
+        for key, value in resp.items():
+            if key=='name':
+                musclelist.append(value)
+    print(musclelist)     
+           
     return musclelist

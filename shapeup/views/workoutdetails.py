@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 import requests
 from django.contrib import messages
-from shapeup.forms.addchallengeform import AddChallenge
+
 from shapeup.models import ChallengesModel
 challenges = []
 
@@ -67,6 +67,7 @@ def workoutdetails(request,slug):
     elif 'stop' in request.POST:
         if ChallengesModel.objects.filter(challenges=slug).exists():
             ChallengesModel.objects.get(challenges=slug).delete()
+            messages.warning(request, "You have quited this challenge")
             check = True
 
     return render(request, 'pages/workoutdetails.html', context={"workout" : workout, "img":img, "check":check})

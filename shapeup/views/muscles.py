@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 def muscles(request):
     
     url = "https://wger.de/api/v2/muscle"
-    main_url = "https://wger.de/"
 
     querystring = {"language": 2}
 
