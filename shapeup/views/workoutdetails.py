@@ -62,6 +62,7 @@ def workoutdetails(request,slug):
             challenge.save()
             messages.success(request, "You have started this challenge")
             check=False
+            
 
     
     elif 'stop' in request.POST:
@@ -69,6 +70,7 @@ def workoutdetails(request,slug):
             ChallengesModel.objects.get(challenges=slug).delete()
             messages.warning(request, "You have quited this challenge")
             check = True
-
-    return render(request, 'pages/workoutdetails.html', context={"workout" : workout, "img":img, "check":check})
+           
+    
+    return render(request, 'pages/workoutdetails.html', context={"workout" : workout, "img":img, "check":check, "slug":slug})
 

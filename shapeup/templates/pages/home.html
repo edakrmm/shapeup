@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{%load static%}
 
 
 {% block title %}Home{% endblock %}
@@ -9,7 +9,6 @@
 <link href="{% static 'css/imgclass.css' %}" rel="stylesheet"/>
 
 {% for challenge in challenges %}
-
     <div class="card m-3">
         <div class="row g-0">
             <div class="col-md-3">
@@ -45,7 +44,7 @@
 {% endfor %}
 
 
-<!-- <nav aria-label="Page navigation example">
+ <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
       {% if challenges.has_previous %}
         <li class="page-item">
@@ -60,7 +59,7 @@
   
       {% if challenges.has_next %}
       <li class="page-item"><a class="page-link" href="?page={{challenges.next_page_number}}">Next</a></li>
-      <li class="page-item"><a class="page-link" href="?page={{challenges.paginator.num_pages}}">Son Sayfa</a></li>
+      <li class="page-item"><a class="page-link" href="?page={{challenges.paginator.num_pages}}">Last Page</a></li>
       {% endif %}
     </ul>
   </nav>

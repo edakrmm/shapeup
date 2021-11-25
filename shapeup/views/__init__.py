@@ -5,4 +5,5 @@ from .logoutview import logoutview
 from .updateprofile import updateprofile
 from .workoutdetails import workoutdetails
 from .workouts import workouts
+from .changepassword import changepassword
 

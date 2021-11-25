@@ -23,7 +23,6 @@ def muscle_list():
     for resp in response:
         for key, value in resp.items():
             if key=='name':
-                musclelist.append(value)
-    print(musclelist)     
+                musclelist.append(value) 
            
     return musclelist
