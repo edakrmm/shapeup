@@ -1,10 +1,12 @@
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import  render
 import requests
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from shapeup.models import ChallengesModel
 challenges = []
 
+
+@login_required(login_url='login')
 def workoutdetails(request,slug):
     
     if slug=='arms':
@@ -49,7 +51,7 @@ def workoutdetails(request,slug):
     response = response.json()
     img = response['results'][bot:top]
 
-    if ChallengesModel.objects.filter(challenges=slug).exists():
+    if ChallengesModel.objects.filter(challenges=slug, challenger=request.user).exists():
         check = False
     else:
         check = True
@@ -66,8 +68,8 @@ def workoutdetails(request,slug):
 
     
     elif 'stop' in request.POST:
-        if ChallengesModel.objects.filter(challenges=slug).exists():
-            ChallengesModel.objects.get(challenges=slug).delete()
+        if ChallengesModel.objects.filter(challenges=slug, challenger=request.user).exists():
+            ChallengesModel.objects.get(challenges=slug, challenger=request.user).delete()
             messages.warning(request, "You have quited this challenge")
             check = True
            
