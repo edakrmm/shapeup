@@ -1,3 +1,4 @@
+{%load static%}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light ml-5">
         <div class="container-fluid">
@@ -25,7 +26,13 @@
               </li>
             </ul>
           </div>
+          <span class="float-end">
+            {%if request.user.avatar%}
+              <img src="{{request.user.avatar.url }}" alt="..." width="75px" height="75px">
+            {%else%}
+              <img src="{% static 'doe.png' %}" alt="..." width="75px" height="75px">
+            {%endif%}
+          </span>
         </div>
     </nav>
 
-    

@@ -12,3 +12,10 @@
     width:350px;
     height:250px
 }
+
+.avatar{
+    background-color: black;
+    color:chartreuse;
+    font-weight: bold;
+}
+

@@ -8,6 +8,7 @@ def home(request):
     challenges = request.user.challenge.order_by('-id')
     page = request.GET.get("page")
     paginator = Paginator(challenges,2)
+    #print(request.user.avatar.url)
 
     descriptions = {"abs":"If you’re looking to train your abs, the good news is that there are a huge variety of exercises that will help you achieve that goal",
                     "arms": "f you want to train your arms, you need to take time between training sessions to let the muscles recover and grow",
