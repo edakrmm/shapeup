@@ -111,3 +111,27 @@ LOGIN_REDIRECT_URL= '/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'custom_format': {
+            'format': '{process:d} {thread:d} {asctime} {levelname} {message}',
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'logs/workouts_displayed.log',
+            'formatter': 'custom_format'
+        }
+    },
+    'loggers': {
+        'workouts_displayed': {
+            'handlers': ['file'],
+            'level': 'INFO'
+        }
+    }
+}
