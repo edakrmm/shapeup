@@ -27,7 +27,7 @@
             </ul>
           </div>
           <span class="float-end">
-            {%if request.user.avatar%}
+            {%if request.user.avatar and request.user.is_authenticated %}
               <img src="{{request.user.avatar.url }}" alt="..." width="75px" height="75px">
             {%else%}
               <img src="{% static 'doe.png' %}" alt="..." width="75px" height="75px">
