@@ -10,6 +10,8 @@ pillow = "*"
 django-crispy-forms = "*"
 django-environ = "*"
 python-decouple = "*"
+boto3 = "*"
+django-storages = "*"
 
 [dev-packages]
 
