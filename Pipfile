@@ -12,6 +12,7 @@ django-environ = "*"
 python-decouple = "*"
 boto3 = "*"
 django-storages = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
