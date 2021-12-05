@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'shapeup',
     'requests',
     'crispy_forms',
-    "storages"
+    "storages",
+    "django_user_agents"
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,12 @@ LOGGING = {
     }
 }
 
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': ['ekrm.tk','www.ekrm.tk','3.19.14.123']
+    }
+}
+
+USER_AGENTS_CACHE = 'default'

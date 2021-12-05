@@ -2,63 +2,116 @@
 {% load muscle_list %}
 {% muscle_list as muscleItem %}
 
-
 <link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-workout" />
 
-    <div class="row justify-content-md-center">
-      <div class="col-11">
-          <div class="card-group">
-              <div class="card m-3">
-                <a href="{%url 'workoutdetails' slug='abs'%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                <div class="card-body">
-                  <h4 class="text-success text-center card-title">{{muscleItem.0}}</h5>
-                </div>
-              </div>
-              <div class="card m-3">
-                <a href="{%url 'workoutdetails' slug='arms'%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                <div class="card-body">
-                  <h4 class="text-success text-center card-title">{{muscleItem.1}}</h5>
-                </div>
-              </div>
-              <div class="card m-3">
-                <a href="{%url 'workoutdetails' slug='back'%}"><img src="{%static 'workoutimages/back.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                <div class="card-body">
-                  <h4 class="text-success text-center card-title">{{muscleItem.2}}</h5>
-                </div>
-              </div>
-              <div class="card m-3">
-                <a href="{%url 'workoutdetails' slug='calves'%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                  <div class="card-body">
-                    <h4 class="text-success text-center card-title">{{muscleItem.3}}</h5>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+{% if request.user_agent.is_mobile %}
   <div class="row justify-content-md-center">
-      <div class="col-9">
-          <div class="card-group">
-              <div class="card m-3">
-                  <a href="{%url 'workoutdetails' slug='chest'%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="card-img-top img-workout" alt="..."></a>
-                  <div class="card-body">
-                      <h4 class="text-success text-center card-title">{{muscleItem.4}}</h5>
-                  </div>
+    <div class="col-11">
+        <div class="card-deck">
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='abs'%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                <h4 class="text-success text-center card-title">{{muscleItem.0}}</h5>
               </div>
-              <div class="card m-3">
-                  <a href="{%url 'workoutdetails' slug='legs'%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                  <div class="card-body">
-                      <h4 class="text-success text-center card-title">{{muscleItem.5}}</h5>
-                  </div>
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='arms'%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                <h4 class="text-success text-center card-title">{{muscleItem.1}}</h5>
               </div>
-              <div class="card m-3">
-                  <a href="{%url 'workoutdetails' slug='shoulders'%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="card-img-top img-workout" alt="..."></a>
-                  <div class="card-body">
-                      <h4 class="text-success text-center card-title">{{muscleItem.6}}</h5>
-                  </div>
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='back'%}"><img src="{%static 'workoutimages/back.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                <h4 class="text-success text-center card-title">{{muscleItem.2}}</h5>
               </div>
-          </div>
-      </div>    
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='calves'%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                <div class="card-body">
+                  <h4 class="text-success text-center card-title">{{muscleItem.3}}</h5>
+                </div>
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='chest'%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                  <h4 class="text-success text-center card-title">{{muscleItem.4}}</h5>
+              </div>
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='legs'%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                  <h4 class="text-success text-center card-title">{{muscleItem.5}}</h5>
+              </div>
+            </div>
+            <div class="card">
+              <a href="{%url 'workoutdetails' slug='shoulders'%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+              <div class="card-body">
+                  <h4 class="text-success text-center card-title">{{muscleItem.6}}</h5>
+              </div>
+            </div>
+        </div>
+    </div>
   </div>
 
+{%else%}
 
+  <link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-workout" />
+
+      <div class="row justify-content-md-center">
+        <div class="col-11">
+            <div class="card-deck">
+                <div class="card">
+                  <a href="{%url 'workoutdetails' slug='abs'%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                  <div class="card-body">
+                    <h4 class="text-success text-center card-title">{{muscleItem.0}}</h5>
+                  </div>
+                </div>
+                <div class="card">
+                  <a href="{%url 'workoutdetails' slug='arms'%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                  <div class="card-body">
+                    <h4 class="text-success text-center card-title">{{muscleItem.1}}</h5>
+                  </div>
+                </div>
+                <div class="card">
+                  <a href="{%url 'workoutdetails' slug='back'%}"><img src="{%static 'workoutimages/back.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                  <div class="card-body">
+                    <h4 class="text-success text-center card-title">{{muscleItem.2}}</h5>
+                  </div>
+                </div>
+                <div class="card">
+                  <a href="{%url 'workoutdetails' slug='calves'%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                    <div class="card-body">
+                      <h4 class="text-success text-center card-title">{{muscleItem.3}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="col-9">
+            <div class="card-deck">
+                <div class="card">
+                    <a href="{%url 'workoutdetails' slug='chest'%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="card-img-top img-workout" alt="..."></a>
+                    <div class="card-body">
+                        <h4 class="text-success text-center card-title">{{muscleItem.4}}</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="{%url 'workoutdetails' slug='legs'%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                    <div class="card-body">
+                        <h4 class="text-success text-center card-title">{{muscleItem.5}}</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <a href="{%url 'workoutdetails' slug='shoulders'%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="card-img-top img-workout" alt="..."></a>
+                    <div class="card-body">
+                        <h4 class="text-success text-center card-title">{{muscleItem.6}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+{% endif %}
 
