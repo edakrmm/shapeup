@@ -18,7 +18,11 @@
 <form method="POST" enctype="multipart/form-data">
   <h2 class="text-center">Your Profile</h2>
   <div>
-    <div style="width:70%; margin:0 auto;">
+    {% if request.user_agent.is_mobile %}
+    <div style="width:80%; margin:0 auto;">
+    {%else%}
+    <div style="width:40%; margin:0 auto;">
+    {%endif%}
         {% csrf_token %}
         {{form|crispy }}
         <input style="width:100%; margin:0 auto;" type="submit" class="btn btn-danger mb-3" value="Update">

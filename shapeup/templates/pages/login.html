@@ -11,11 +11,15 @@
 <form method="POST" enctype="multipart/form-data">
   <h2 class="text-center">Login</h2>
   <div>
-    <div style="width:700px; margin:0 auto;">
+    {% if request.user_agent.is_mobile %}
+      <div style="width:90%; margin:0 auto;">
+    {%else%}
+      <div style="width:40%; margin:0 auto;">
+    {%endif%}
         {% csrf_token %}
         {{form|crispy }}
-        <input style="width:700px; margin:0 auto;" type="submit" class="btn btn-danger mt-3 mb-3" value="Login">
-        <a style="width:700px; margin:0 auto;" href="{%url 'signup'%}" class="btn btn-primary active" aria-current="page">Go to Sign Up</a>
+        <input style="width:100%; margin:0 auto;" type="submit" class="btn btn-danger mt-3 mb-3" value="Login">
+        <a style="width:100%; margin:0 auto;" href="{%url 'signup'%}" class="btn btn-primary active" aria-current="page">Go to Sign Up</a>
     </div>
   </div>
         

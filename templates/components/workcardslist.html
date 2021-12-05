@@ -2,7 +2,6 @@
 {% load muscle_list %}
 {% muscle_list as muscleItem %}
 
-<link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-workout" />
 
 {% if request.user_agent.is_mobile %}
 
@@ -57,8 +56,6 @@
 
 {%else%}
 
-  <link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-workout" />
-
       <div class="row justify-content-md-center">
         <div class="col-11">
             <div class="card-deck">
@@ -89,7 +86,7 @@
             </div>
         </div>
     </div>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center mt-2">
         <div class="col-9">
             <div class="card-deck">
                 <div class="card">

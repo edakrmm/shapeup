@@ -7,9 +7,13 @@
 
     <h1 class="text-center">Muscle Map</h1>
 
-    <div style="width:70%;" class="list-group mx-auto mt-5">
+    {% if request.user_agent.is_mobile %}
+        <div style="width:90%;" class="list-group mx-auto mt-5">
+    {%else%}
+        <div style="width:50%;" class="list-group mx-auto mt-5">
+    {%endif%}
         {%for muscle in muscles%}
-            <li class="list-group-item d-flex justify-content-md-around align-items-center"><span class="align-middle" >{{muscle.name}}</span><img class="float-right" style="width:auto; height:200px" src="https://wger.de{{muscle.image_url_main}}" /></li>
+            <li class="list-group-item d-flex justify-content-md-around align-items-center"><span class="align-middle" >{{muscle.name}}</span><img class="float-right ml-5" style="width:auto; height:200px" src="https://wger.de{{muscle.image_url_main}}" /></li>
         {%endfor%}
     </div>
 
