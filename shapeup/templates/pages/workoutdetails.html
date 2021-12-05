@@ -8,55 +8,104 @@
 {% block content %}
 <link href="{% static 'css/imgclass.css' %}" rel="stylesheet" />
 
-<!-- action="{{ request.META.HTTP_REFERER }}" -->
-<div class="ml-4" style="width:600px">
-  <form  method="POST"> 
-    {% csrf_token %}
-    <!-- {{form|crispy }} -->
-    {%if check%}
-      <input class="btn btn-outline-info btn-lg" type="submit" name='start' value="Start this Challenge" />
-    {%else%}
-      <input class="btn btn-outline-danger btn-lg" type="submit" name='stop' value="Stop this Challenge" />
-    {%endif%}
-  </form>
+{% if request.user_agent.is_mobile %}
+  <!-- action="{{ request.META.HTTP_REFERER }}" -->
+  <div class="ml-4">
+    <form  method="POST"> 
+      {% csrf_token %}
+      <!-- {{form|crispy }} -->
+      {%if check%}
+        <input class="btn btn-outline-info btn-lg" type="submit" name='start' value="Start this Challenge" />
+      {%else%}
+        <input class="btn btn-outline-danger btn-lg" type="submit" name='stop' value="Stop this Challenge" />
+      {%endif%}
+    </form>
 
 
-  {%if messages%}
-    <div style="width:270px" class="alert alert-success" role="alert">
-      {%for message in messages %}
-        {{message}}
-      {%endfor%}
-    </div>
-  {%endif%}
-</div>
-
-
-<h1 class="text-center ">Exercises</h1>
-
-    
-<div class="row g-0 mt-5">
-  <div class="col-8 rounded float-left">
-      {%for work in workout%}
-      <div>
-          <div class="col-md-10">
-            <div class="card-body">
-              <h5 class="card-title">{{work.name}}</h5>
-              <p class="card-text">{{work.description | safe}}</p>
-            </div>
-          </div>
+    {%if messages%}
+      <div style="width:100%" class="alert alert-success" role="alert">
+        {%for message in messages %}
+          {{message}}
+        {%endfor%}
       </div>
-      {%endfor%}
+    {%endif%}
   </div>
 
-  <div class="col-4 rounded float-right">
-    {% for i in img %}
-        <img src="{{i.image}}" class="img-detail float-right mt-5" alt="...">
-        {% endfor %}
+
+  <h1 class="text-center mt-3">Exercises</h1>
+
+  <div class="row g-0 mt-5">
+    <div class="col-11">
+        {%for work in workout%}
+        <div>
+            <div class="col-md-10">
+              <div class="card-body">
+                <h5 class="card-title">{{work.name}}</h5>
+                <p class="card-text">{{work.description | safe}}</p>
+              </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+    <div class="col-1">
+      {% for i in img %}
+          <img src="{{i.image}}" class="img-detail float-right mt-5" style="opacity: 0.2" alt="...">
+      {% endfor %}
+    </div>
   </div>
-</div>
+
+
+
+{%else%}
+    <!-- action="{{ request.META.HTTP_REFERER }}" -->
+    <div class="ml-4">
+      <form  method="POST"> 
+        {% csrf_token %}
+        <!-- {{form|crispy }} -->
+        {%if check%}
+          <input class="btn btn-outline-info btn-lg" type="submit" name='start' value="Start this Challenge" />
+        {%else%}
+          <input class="btn btn-outline-danger btn-lg" type="submit" name='stop' value="Stop this Challenge" />
+        {%endif%}
+      </form>
   
-
-
+  
+      {%if messages%}
+        <div style="width:100%" class="alert alert-success" role="alert">
+          {%for message in messages %}
+            {{message}}
+          {%endfor%}
+        </div>
+      {%endif%}
+    </div>
+  
+  
+    <h1 class="text-center ">Exercises</h1>
+  
+        
+    <div class="row g-0 mt-5">
+      <div class="col-8 rounded float-left">
+          {%for work in workout%}
+          <div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">{{work.name}}</h5>
+                  <p class="card-text">{{work.description | safe}}</p>
+                </div>
+              </div>
+          </div>
+          {%endfor%}
+      </div>
+  
+      <div class="col-4 rounded float-right">
+        {% for i in img %}
+            <img src="{{i.image}}" class="img-detail float-right mt-5" alt="...">
+        {% endfor %}
+      </div>
+    </div>
+  
+{% endif %}
 
 {% endblock %}
 
