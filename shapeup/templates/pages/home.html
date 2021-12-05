@@ -6,85 +6,179 @@
 
 {% block content %}
 
-<link href="{% static 'css/imgclass.css' %}" rel="stylesheet"/>
+<link href="{% static 'css/imgclass.css' %}" rel="stylesheet" class="img-home"/>
 
-{% for challenge in challenges %}
-    <div class="card border-success m-3">
-        <div class="row g-0">
-            <div class="col-md-3">
-                {% ifequal challenge|stringformat:"s" 'arms' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.arms}}</p>
-                      </div>
-                  </div>
-                {% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'abs' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.abs}}</p>
-                      </div>
-                  </div>{% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'chest' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.chest}}</p>
-                      </div>
-                  </div>{% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'back' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/back.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.back}}</p>
-                      </div>
-                  </div>{% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'shoulders' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.shoulders}}</p>
-                      </div>
-                  </div>{% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'legs' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.legs}}</p>
-                      </div>
-                  </div>{% endifequal %}
-                {% ifequal challenge|stringformat:"s" 'calves' %}
-                    <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="img-home" alt="..."></a>
-                  </div>
-                  <div class="col-md-8">
-                      <div class="card-body">
-                          <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
-                          <p class="card-text">{{descriptions.calves}}</p>
-                      </div>
-                  </div>
-                {% endifequal %}
-        </div>
-    </div>
-
+{% if request.user_agent.is_mobile %}
+  {% for challenge in challenges %}
+    <div class="card border-success">
+        {% ifequal challenge|stringformat:"s" 'arms'%}
+          
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="img-home" alt="..."></a>
+         
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.arms}}</p>
+            </div>
+          
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'abs' %}
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="img-home" alt="..."></a>
+        
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.abs}}</p>
+            </div>
        
-{% empty %}
-<h5 class="text-black-50 card-title ml-5 mt-5">No Challenge Started</h5>
-{% endfor %}
+          
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'chest' %}
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="img-home" alt="..."></a>
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.chest}}</p>
+            </div>
 
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'back' %}
+
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/back.jpg' %}" class="img-home" alt="..."></a>
+
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.back}}</p>
+            </div>
+
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'shoulders' %}
+
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="img-home" alt="..."></a>
+          
+          
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.shoulders}}</p>
+            </div>
+          
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'legs' %}
+      
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="img-home" alt="..."></a>
+          
+        
+            <div class="card-body">
+              <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+              <p class="card-text">{{descriptions.legs}}</p>
+            </div>
+        
+        {% endifequal %}
+        {% ifequal challenge|stringformat:"s" 'calves' %}
+          
+            <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="img-home" alt="..."></a>
+          
+          
+            <div class="card-body">
+                <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                <p class="card-text">{{descriptions.calves}}</p>
+              </div>
+        
+        {% endifequal %}
+      
+    </div>
+  {% empty %}
+    <h5 class="text-black-50 card-title ml-5 mt-5">No Challenge Started</h5>
+  {% endfor %}
+
+{%else%}  
+
+  {% for challenge in challenges %}
+      <div class="card border-success m-3">
+          <div class="row g-0">
+            {% ifequal challenge|stringformat:"s" 'arms'%}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/arms.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                    <p class="card-text">{{descriptions.arms}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'abs' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/abs.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                  <p class="card-text">{{descriptions.abs}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'chest' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/chest.jpeg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                  <p class="card-text">{{descriptions.chest}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'back' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/back.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                  <p class="card-text">{{descriptions.back}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'shoulders' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/shoulders.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                  <p class="card-text">{{descriptions.shoulders}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'legs' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/legs.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                  <p class="card-text">{{descriptions.legs}}</p>
+                </div>
+              </div>
+            {% endifequal %}
+            {% ifequal challenge|stringformat:"s" 'calves' %}
+              <div class="col-md-4">
+                <a href="{%url 'workoutdetails' slug=challenge%}"><img src="{%static 'workoutimages/calves.jpg' %}" class="img-home" alt="..."></a>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="display-4 text-success card-title mb-5">{{challenge}}</h5>
+                    <p class="card-text">{{descriptions.calves}}</p>
+                  </div>
+              </div>
+            {% endifequal %}
+          </div>
+      </div>
+
+        
+  {% empty %}
+  <h5 class="text-black-50 card-title ml-5 mt-5">No Challenge Started</h5>
+  {% endfor %}
+
+{% endif %}
 
  <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
