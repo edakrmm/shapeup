@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'requests',
     'crispy_forms',
     "storages",
-    "django_user_agents"
+    "django_user_agents",
 ]
 
 MIDDLEWARE = [
@@ -43,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -140,11 +141,14 @@ LOGGING = {
 }
 
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#         'LOCATION': '3.19.14.123',
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '3.19.14.123',
+    }
+}
 
-#USER_AGENTS_CACHE = 'default'
+USER_AGENTS_CACHE = 'default'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 300

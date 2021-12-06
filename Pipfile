@@ -16,6 +16,7 @@ psycopg2-binary = "*"
 gunicorn = "*"
 django-user-agents = "*"
 python-memcached = "*"
+django-session-timeout = "*"
 
 [dev-packages]
 

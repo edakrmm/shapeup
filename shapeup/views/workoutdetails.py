@@ -1,8 +1,10 @@
-from django.shortcuts import  render
+from django.shortcuts import  render,get_object_or_404
 import requests
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from shapeup.models import ChallengesModel
+
+
 challenges = []
 
 
